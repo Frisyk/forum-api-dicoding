@@ -22,6 +22,7 @@ describe('DetailsComment entities', () => {
       content: 'sebuah komentar',
       date: 12345, 
       replies: 'invalid', 
+      likeCount: 0,
     };
 
     // Action and Assert
@@ -36,6 +37,7 @@ describe('DetailsComment entities', () => {
       content: 'sebuah komentar',
       date: '2021-08-08T07:22:33.555Z',
       replies: [],
+      likeCount: 0,
       is_delete: true,
     };
 
@@ -54,6 +56,7 @@ describe('DetailsComment entities', () => {
       content: 'sebuah komentar',
       date: '2021-08-08T07:22:33.555Z',
       replies: [],
+      likeCount: 2,
       is_delete: false,
     };
 

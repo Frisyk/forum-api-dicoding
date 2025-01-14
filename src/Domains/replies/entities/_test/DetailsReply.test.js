@@ -15,7 +15,7 @@ describe('DetailsReply entities', () => {
 
   it('should throw error when payload does not meet data type specification', () => {
     const payload = {
-      id: 123, 
+      id: '12', 
       username: 'Llyod Frontera',
       content: 'This is a reply',
       date: 12345,

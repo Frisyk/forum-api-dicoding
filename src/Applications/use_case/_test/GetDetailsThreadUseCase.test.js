@@ -5,6 +5,7 @@ const ReplyRepository = require('../../../Domains/replies/ReplyRepository');
 const DetailsThread = require('../../../Domains/threads/entities/DetailsThread');
 const DetailsComment = require('../../../Domains/comments/entities/DetailsComment');
 const DetailsReply = require('../../../Domains/replies/entities/DetailsReply');
+const LikeRepository = require('../../../Domains/likes/LikeRepository');
 
 describe('GetDetailsThreadUseCase', () => {
   it('should orchestrate the get thread details action correctly', async () => {
@@ -51,6 +52,8 @@ describe('GetDetailsThreadUseCase', () => {
     const mockThreadRepository = new ThreadRepository();
     const mockCommentRepository = new CommentRepository();
     const mockReplyRepository = new ReplyRepository();
+    const mockLikeRepository = new LikeRepository();
+
 
     // Mocking
     mockThreadRepository.getThreadDetailsById = jest.fn()
@@ -92,12 +95,37 @@ describe('GetDetailsThreadUseCase', () => {
           owner: 'user-1245',
         },
       ]));
+    
+    mockLikeRepository.getLikesByThreadId = jest.fn()
+      .mockImplementation(() => Promise.resolve([
+        {
+          id: 'like-12',
+          comment_id: 'comment-123',
+          owner: 'Jonatan',
+        },
+        {
+          id: 'like-23',
+          comment_id: 'comment-123',
+          owner: 'Joseph',
+        },
+        {
+          id: 'like-34',
+          comment_id: 'comment-124',
+          owner: 'jostar',
+        },
+        {
+          id: 'like-45',
+          comment_id: 'comment-124',
+          owner: 'jojo',
+        },
+      ]));
 
     // Create use case instance
     const getDetailsThreadUseCase = new GetDetailsThreadUseCase({
       threadRepository: mockThreadRepository,
       commentRepository: mockCommentRepository,
       replyRepository: mockReplyRepository,
+      likeRepository: mockLikeRepository,
     });
 
     // Expected Result
@@ -111,10 +139,12 @@ describe('GetDetailsThreadUseCase', () => {
               ...mockCommentsReplies[0],
             }),
           ],
+          likeCount: 2
         }),
         new DetailsComment({
           ...mockThreadComments[1],
           replies: [],
+          likeCount: 2
         }),
       ],
     });
@@ -130,6 +160,8 @@ describe('GetDetailsThreadUseCase', () => {
       .toBeCalledWith(threadId);
 
     expect(mockReplyRepository.getRepliesByThreadId)
+      .toBeCalledWith(threadId);
+    expect(mockLikeRepository.getLikesByThreadId)
       .toBeCalledWith(threadId);
 
     expect(result).toStrictEqual(expectedDetailsThread);

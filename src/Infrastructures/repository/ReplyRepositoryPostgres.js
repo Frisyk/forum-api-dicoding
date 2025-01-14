@@ -32,7 +32,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
       };
   
       const result = await this._pool.query(query);
-  
+
       return result.rows;
   }
 
@@ -47,7 +47,7 @@ class ReplyRepositoryPostgres extends ReplyRepository {
     };
 
     const result = await this._pool.query(query);
-
+    
     return result.rows;
   }
 

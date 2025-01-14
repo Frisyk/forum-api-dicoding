@@ -29,7 +29,7 @@ class DetailsReply {
       typeof id !== 'string'
       || typeof username !== 'string'
       || typeof content !== 'string'
-      || typeof date !== 'string'
+      || (typeof date !== 'string' && typeof date !== 'object')
       || typeof is_delete !== 'boolean'
     ) {
       throw new Error('DETAILS_REPLY.NOT_MEET_DATA_TYPE_SPECIFICATION');
