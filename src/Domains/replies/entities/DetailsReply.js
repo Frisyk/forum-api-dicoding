@@ -7,7 +7,7 @@ class DetailsReply {
     } = payload;
 
     this.id = id;
-    this.content = is_delete ? '**komentar telah dihapus**' : content;
+    this.content = is_delete ? '**balasan telah dihapus**' : content;
     this.username = username;
     this.date = date;
   }
