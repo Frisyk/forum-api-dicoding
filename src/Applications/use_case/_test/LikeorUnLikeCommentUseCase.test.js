@@ -2,7 +2,7 @@ const LikeRepository = require('../../../Domains/likes/LikeRepository');
 const CommentRepository = require('../../../Domains/comments/CommentRepository');
 const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 const Like = require('../../../Domains/likes/entities/Like');
-const LikeOrUnLikeCommentUseCase = require('../LikeorUnLikeCommentUseCase');
+const LikeorUnLikeCommentUseCase = require('../LikeorUnLikeCommentUseCase');
 
 describe('LikeOrLikeCommentUseCase', () => {
   it('should orchestrating the like comment action correctly if comment is not liked', async () => {
@@ -24,7 +24,7 @@ describe('LikeOrLikeCommentUseCase', () => {
     mockLikeRepository.addLike = jest.fn(() => Promise.resolve());
 
     // creating use case instance
-    const likeOrUnLikeCommentUseCase = new LikeOrUnLikeCommentUseCase({
+    const likeOrUnLikeCommentUseCase = new LikeorUnLikeCommentUseCase({
       likeRepository: mockLikeRepository,
       commentRepository: mockCommentRepository,
       threadRepository: mockThreadRepository,
@@ -65,7 +65,7 @@ describe('LikeOrLikeCommentUseCase', () => {
     mockLikeRepository.deleteLike = jest.fn(() => Promise.resolve());
 
     // creating use case instance 
-    const likeOrLikeCommentUseCase = new LikeOrUnLikeCommentUseCase({
+    const likeOrLikeCommentUseCase = new LikeorUnLikeCommentUseCase({
       likeRepository: mockLikeRepository,
       commentRepository: mockCommentRepository,
       threadRepository: mockThreadRepository,

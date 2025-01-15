@@ -37,7 +37,7 @@ const CommentRepositoryPostgres = require('./repository/CommentRepositoryPostgre
 const ReplyRepositoryPostgres = require('./repository/ReplyRepositoryPostgres');
 const LikeRepository = require('../Domains/likes/LikeRepository');
 const LikeRepositoryPostgres = require('./repository/LikeRepositoryPostgres');
-const LikeOrUnLikeCommentUseCase = require('../Applications/use_case/LikeorUnLikeCommentUseCase');
+const LikeorUnLikeCommentUseCase = require('../Applications/use_case/LikeorUnLikeCommentUseCase');
 
 // creating container
 const container = createContainer();
@@ -342,8 +342,8 @@ container.register([
     },
   },
   {
-    key: LikeOrUnLikeCommentUseCase.name,
-    Class: LikeOrUnLikeCommentUseCase,
+    key: LikeorUnLikeCommentUseCase.name,
+    Class: LikeorUnLikeCommentUseCase,
     parameter: {
       injectType: 'destructuring',
       dependencies: [

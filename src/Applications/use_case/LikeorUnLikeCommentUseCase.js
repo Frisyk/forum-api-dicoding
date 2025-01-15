@@ -1,6 +1,6 @@
 const Like = require('../../Domains/likes/entities/Like');
 
-class LikeOrUnLikeCommentUseCase {
+class LikeorUnLikeCommentUseCase {
   constructor({
     likeRepository,
     commentRepository,
@@ -29,4 +29,4 @@ class LikeOrUnLikeCommentUseCase {
   }
 }
 
-module.exports = LikeOrUnLikeCommentUseCase;
+module.exports = LikeorUnLikeCommentUseCase;
