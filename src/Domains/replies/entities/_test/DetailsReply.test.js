@@ -61,6 +61,6 @@ describe('DetailsReply entities', () => {
     const detailsReply = new DetailsReply(payload);
 
     // Assert
-    expect(detailsReply.content).toEqual('**komentar telah dihapus**');
+    expect(detailsReply.content).toEqual('**balasan telah dihapus**');
   });
 });
