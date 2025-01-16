@@ -136,7 +136,8 @@ describe('/threads endpoint', () => {
       const response = await server.inject({
         method: 'GET',
         url: `/threads/${thread.id}`,
-      });
+      })
+
 
       // Assert
       const responseJson = JSON.parse(response.payload);
