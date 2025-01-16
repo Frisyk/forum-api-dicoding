@@ -30,7 +30,7 @@ const createServer = async (container) => {
       aud: false,
       iss: false,
       sub: false,
-      maxAgeSec: 3000,
+      maxAgeSec: parseInt(process.env.ACCESS_TOKEN_AGE),
     },
     validate: (artifacts) => ({
       isValid: true,
